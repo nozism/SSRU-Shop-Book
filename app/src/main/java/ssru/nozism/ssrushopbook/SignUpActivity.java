@@ -2,12 +2,49 @@ package ssru.nozism.ssrushopbook;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
 
 public class SignUpActivity extends AppCompatActivity {
+
+    //Explicit
+    private EditText nameEditText, surnameEditText,
+            userEditText, passwordEditText;
+    private String nameString, surenameString,
+            userString, passwordString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-    }
-}
+
+        //Bind Widget
+        nameEditText = (EditText) findViewById(R.id.editText3);
+        surnameEditText = (EditText) findViewById(R.id.editText4);
+        userEditText = (EditText) findViewById(R.id.editText);
+        passwordEditText = (EditText) findViewById(R.id.editText2);
+    }  //Main Method
+
+    public void clickSignUpSign(View view) {
+
+        nameString = nameEditText.getText().toString().trim();
+        surenameString = surnameEditText.getText().toString().trim();
+        userString = userEditText.getText().toString().trim();
+        passwordString = passwordEditText.getText().toString().trim();
+
+        //Check space
+        if (nameString.equals("") || surenameString.equals("") ||
+                userString.equals("") || passwordString.equals("")) {
+            //Have Space
+            MyAlert myAlert = new MyAlert();
+            myAlert.myDialog(this, "มีช่องว่าง", "กรุณากรอกทุกช่อง ค่ะ");
+        } else {
+
+            //No space
+        }
+
+
+    }  //clickSign
+
+
+}       //Main Class
